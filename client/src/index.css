@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+  /* A calm, consistent focus ring everywhere. */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-forest-500/40 ring-offset-2 ring-offset-paper rounded-md;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* ---- surfaces ---- */
+  .card {
+    @apply rounded-2xl border border-line bg-card shadow-soft;
+  }
+  .card-hover {
+    @apply transition duration-200 hover:-translate-y-0.5 hover:shadow-lift hover:border-line;
+  }
+
+  /* ---- buttons ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+           transition duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-forest-700 text-white hover:bg-forest-600 active:bg-forest-900;
+  }
+  .btn-secondary {
+    @apply btn border border-line bg-card text-ink hover:border-ink-faint hover:bg-line-soft;
+  }
+  .btn-ghost {
+    @apply btn text-ink-soft hover:bg-line-soft hover:text-ink;
+  }
+  .btn-brass {
+    @apply btn bg-brass-500 text-white hover:bg-brass-600;
+  }
+
+  /* ---- form fields ---- */
+  .field {
+    @apply w-full rounded-xl border border-line bg-card px-4 py-3 text-sm text-ink
+           placeholder:text-ink-faint transition
+           focus:border-forest-300 focus:outline-none focus:ring-2 focus:ring-forest-500/25;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-soft;
+  }
+  .hint {
+    @apply mt-1.5 text-xs text-ink-muted;
+  }
+
+  /* ---- small pieces ---- */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5
+           text-xs font-medium text-ink-soft transition hover:border-forest-300 hover:bg-forest-50 hover:text-forest-700;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide;
+  }
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted;
+  }
+  .divider {
+    @apply h-px w-full bg-line;
+  }
+}
+
+/* The agent's prose replies: readable, no heavy markdown styling. */
+.reply-prose p {
+  @apply mb-2 last:mb-0 leading-relaxed;
+}
+.reply-prose strong {
+  @apply font-semibold text-ink;
+}
+.reply-prose ul {
+  @apply my-2 space-y-1 pl-1;
+}
+.reply-prose li {
+  @apply flex gap-2 text-ink-soft before:text-forest-500 before:content-['—'];
+}
+
+/* Thin, unobtrusive scrollbars inside panels. */
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  background: #E0DCD2;
+  border-radius: 999px;
+}
+.scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
